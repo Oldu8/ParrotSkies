@@ -7,22 +7,33 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Parrot Skies') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/js/app.js'])
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-               Hi
-            </div>
-        </nav>
+        <header class="flex justify-between">
+            <div>Logo</div>
+            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                <a href="/" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Home</a>
+                <a href="/my_story" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">My story</a>
+                <a href="/categories" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Post by category</a>
+                <a href="/users_stories" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Users Stories</a>
+            </nav>
+        </header>
+        <div>
+            @yield('content')
+        </div>
+        <footer>
+            <p>Made by Oldu</p>
+        </footer>
     </div>
 </body>
 </html>

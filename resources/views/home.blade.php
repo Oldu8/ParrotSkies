@@ -2,12 +2,14 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-hi
-            </div>
-        </div>
+    <div>
+        Hero block
+    </div>
+    <div>
+        Popular posts
+    </div>
+    <div>
+        FAQ - frequently asked questions
     </div>
 </div>
 @endsection
