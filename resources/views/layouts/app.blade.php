@@ -19,21 +19,15 @@
 </head>
 <body>
     <div id="app">
-        <header class="flex justify-between">
-            <div>Logo</div>
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-                <a href="/" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Home</a>
-                <a href="/my_story" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">My story</a>
-                <a href="/categories" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Post by category</a>
-                <a href="/users_stories" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Users Stories</a>
-            </nav>
-        </header>
-        <div>
+        <div class="container mx-auto flex flex-col min-h-screen justify-between">
+            @include('layouts.header')
+        <div class="py-2">
             @yield('content')
         </div>
-        <footer>
+        <footer class="py-2">
             <p>Made by Oldu</p>
         </footer>
+    </div>
     </div>
 </body>
 </html>
