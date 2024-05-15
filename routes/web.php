@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -21,3 +22,8 @@ use App\Http\Controllers\HomeController;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::view('/welcome', 'admin.welcome')->name('admin.welcome');
+    Route::get('/posts', [PostController::class, 'index'])->name('admin.posts.index');
+});
