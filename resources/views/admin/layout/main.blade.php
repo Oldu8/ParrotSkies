@@ -11,13 +11,12 @@
 
 
     <title>
-        @yield('title_prefix', config('adminlte.title_prefix', ''))
+        Admin
     </title>
 
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- @yield('adminlte_css') -->
     <link rel="stylesheet" href="/css/admin_custom.css">
 </head>
 

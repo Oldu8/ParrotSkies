@@ -11,7 +11,11 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->string('slug', 2048);
+            $table->string('thumbnail', 2048)->nullable();
+            $table->boolean('active');
+            $table->dateTime('published_at');
+            $table->foreignId('user_id')->constrained();
         });
     }
 
@@ -21,7 +25,11 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropForeignIdFor('category_id');
+            $table->dropColumn('slug');
+            $table->dropColumn('thumbnail');
+            $table->dropColumn('active');
+            $table->dropColumn('published_at');
+            $table->dropColumn('user_id');
         });
     }
 };
