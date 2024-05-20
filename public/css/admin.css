@@ -1,0 +1,32 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+    background-color: rgb(62, 52, 73);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid white;
+}
+
+.admin_panel {
+    width: 20vw;
+    padding: 10px 16px;
+}
+
+.content {
+    background-color: rgb(215, 232, 233);
+    width: 100%;
+}
+
+.admin_link {
+    color: white;
+    text-decoration: none;
+}
+
+.admin_swap {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}

@@ -1,5 +1,6 @@
 @extends('admin.layout.main')
 
+@section('content')
 <div class='ml-4 mt-4'>
     @if ($posts->count() == 0)
         <p class="text-500 font-semibold text-lg text-center">No posts found</p>
@@ -14,3 +15,4 @@
         @endforeach
     @endif
 </div>
+@endSection

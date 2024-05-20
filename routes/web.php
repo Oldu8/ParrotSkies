@@ -21,9 +21,9 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('client.home');
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::view('/welcome', 'admin.welcome')->name('admin.welcome');
+    Route::view('/welcome', 'admin.welcome')->name('admin.welcome'); // sdelat home controller hz nahuya kone4no
     Route::get('/posts', [PostController::class, 'index'])->name('admin.posts.index');
 });
