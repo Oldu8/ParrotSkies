@@ -33,8 +33,9 @@ body {
 
 .input-group {
     display: flex;
-    gap: 10px;
-    align-items: center;
+    flex-direction: column;
+    /* gap: 10px; */
+    /* align-items: center; */
 }
 /* Toggle switch container */
 .toggle-switch {

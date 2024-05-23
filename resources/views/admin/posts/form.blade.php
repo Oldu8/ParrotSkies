@@ -1,5 +1,5 @@
-<div class='ml-4 mt-6 font-semibold text-gray-600 mb-2'>
-    <form action="/posts" method="POST" class="flex flex-col gap-2">
+<div class='py-4 px-6 font-semibold text-gray-600 mb-2 '>
+    <form action="/posts" method="POST" class="flex flex-col gap-2 border-2  border-indigo-600 p-2 rounded-sm">
         @csrf
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="input-group">
@@ -23,6 +23,28 @@
                 </label>
             </div>
         </div>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="input-group">
+                <strong>Select category:</strong>
+                <select name="category_id" class="border p-1 rounded" style="width: 300px">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="input-group">
+                <strong>Select an image:</strong>
+                <input type="text" name="thumbnail" style="width: 300px">
+            </div>
+            <div class="input-group">
+                <strong>Set your slug:</strong>
+                <input type="text" name="slug" style="width: 300px">
+            </div>
+            <div class="input-group">
+                <strong>Select time of publishing:</strong>
+                <input type="datetime-local" name="published_at" style="width: 300px">
+            </div>
+        </div>
 
         <hr>
         @if($errors->any())
@@ -35,5 +57,6 @@
             </div>
             <hr>
         @endif
-        <input type="submit" value="Create" class="border p-1 rounded bg-blue-500 text-white ">
+        <input type="submit" value="Create" class="border p-1 rounded bg-blue-500 text-white w-1/4">
+    </form>
 </div>
