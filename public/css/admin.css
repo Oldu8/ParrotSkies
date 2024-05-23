@@ -30,3 +30,55 @@ body {
     text-decoration: none;
     font-size: 20px;
 }
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+/* Toggle switch container */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default checkbox */
+.toggle-switch input {
+    display: none;
+}
+
+/* Toggle switch slider (background) */
+.toggle-label {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 34px;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.2s;
+}
+
+/* Toggle switch circle (knob) */
+.toggle-label .toggle-switch {
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    top: 4px;
+    left: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* When checkbox is checked */
+.toggle-switch input:checked + .toggle-label {
+    background-color: #4caf50;
+}
+
+/* Move the toggle switch knob to the right when checked */
+.toggle-switch input:checked + .toggle-label .toggle-switch {
+    transform: translateX(26px);
+}

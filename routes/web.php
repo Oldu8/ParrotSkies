@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -25,5 +26,7 @@ Route::get('/', [HomeController::class, 'index'])->name('client.home');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::view('/welcome', 'admin.welcome')->name('admin.welcome'); // sdelat home controller hz nahuya kone4no
-    Route::get('/posts', [PostController::class, 'index'])->name('admin.posts.index');
+    // Route::get('/posts', [PostController::class, 'index'])->name('admin.posts.index');
+    Route::resource('posts', PostController::class);
+    Route::resource('categories', CategoriesController::class);
 });

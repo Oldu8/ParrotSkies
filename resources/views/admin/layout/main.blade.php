@@ -26,9 +26,8 @@
             </div>
             <div class="flex justify-between flex-col pt-5">
                 <!-- <a href="{{ route('admin.welcome') }}" class="admin_link">Home</a> -->
-                <a href="{{ route('admin.posts.index') }}" class="admin_link">All
-                    Posts</a>
-                <p class="admin_link">Create Post</p>
+                <a href="/admin/posts" class="admin_link"> Posts</a>
+                <a href="/admin/categories" class="admin_link">Categories</a>
             </div>
         </div>
         <div class="content">

@@ -10,7 +10,7 @@
                 <a href="/posts/{{ $post->id }}" class="text-blue-500 hover:underline">
                     <strong>Title: {{ $post->title }}</strong>
                 </a>
-                <p>Description: {{ $post->description }}</p>
+                <p>Description: {{ $post->content }}</p>
             </li>
         @endforeach
     @endif

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Http\Requests\Posts\SaveRequest;
 
 
 class PostController extends Controller
@@ -14,16 +15,16 @@ class PostController extends Controller
         return view('admin.posts.index', compact('posts'));
     }
 
-    // public function create()
-    // {
-    //     return view('posts.create');
-    // }
+    public function create()
+    {
+        return view('admin.posts.create');
+    }
 
-    // public function store(SaveRequest $request)
-    // {
-    //     $post = Post::create($request->validated());
-    //     return redirect('/posts/' . $post->id);
-    // }
+    public function store(SaveRequest $request)
+    {
+        $post = Post::create($request->validated());
+        return redirect('/posts/' . $post->id);
+    }
 
     // public function show(string $id)
     // {
