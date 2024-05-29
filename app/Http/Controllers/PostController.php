@@ -18,21 +18,22 @@ class PostController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::all()->pluck('name', 'id');
         return view('admin.posts.create', compact('categories'));
     }
 
     public function store(SaveRequest $request)
     {
         $post = Post::create($request->validated());
-        return redirect('/posts/' . $post->id);
+        return redirect('admin/posts/' . $post->id);
     }
 
-    // public function show(string $id)
-    // {
-    // $post = Post::findOrFail($id);
-    //     return view('posts.show', ['post' => $post]);
-    // }
+    public function show(string $id)
+    {
+        $post = Post::findOrFail($id);
+        $categories = Category::all()->pluck('name', 'id');
+        return view('admin.posts.show', compact('post', 'categories'));
+    }
 
     // public function edit(string $id)
     // {

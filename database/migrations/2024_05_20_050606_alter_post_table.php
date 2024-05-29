@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('thumbnail', 2048)->nullable();
             $table->boolean('active');
             $table->dateTime('published_at');
-            $table->foreignId('user_id')->constrained();
+            // $table->foreignId('user_id')->constrained();
         });
     }
 
@@ -29,7 +29,8 @@ return new class extends Migration {
             $table->dropColumn('thumbnail');
             $table->dropColumn('active');
             $table->dropColumn('published_at');
-            $table->dropColumn('user_id');
+            // $table->dropForeign(['user_id']);
+            // $table->dropColumn('user_id');
         });
     }
 };

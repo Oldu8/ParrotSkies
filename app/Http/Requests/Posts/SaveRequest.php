@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Posts;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SaveRequest extends FormRequest
 {
@@ -15,8 +16,16 @@ class SaveRequest extends FormRequest
     {
         return [
             'title' => 'required|min:5|max:64',
-            'description' => 'required|min:5|max:1000',
-            'active' => 'boolean'
+            'content' => 'required|min:5|max:2048',
+            'slug' => [
+                'required',
+                'string',
+                Rule::unique('posts', 'slug')->ignore($this->id),
+            ],
+            'active' => 'boolean',
+            'thumbnail' => 'string|max:2048',
+            'category_id' => 'exists:categories,id',
+            'published_at' => ['nullable', 'string'],
         ];
     }
 }

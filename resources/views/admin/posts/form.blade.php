@@ -1,5 +1,5 @@
-<div class='py-4 px-6 font-semibold text-gray-600 mb-2 '>
-    <form action="/posts" method="POST" class="flex flex-col gap-2 border-2  border-indigo-600 p-2 rounded-sm">
+<div class='py-4 font-semibold text-gray-600 mb-2 '>
+    <form action="/admin/posts" method="POST" class="flex flex-col gap-2">
         @csrf
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="input-group">
@@ -27,8 +27,8 @@
             <div class="input-group">
                 <strong>Select category:</strong>
                 <select name="category_id" class="border p-1 rounded" style="width: 300px">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                    @foreach($categories as $key => $category)
+                        <option class="border p-1 rounded" value="{{ $key }}">{{ $category }}</option>
                     @endforeach
                 </select>
             </div>
@@ -57,6 +57,8 @@
             </div>
             <hr>
         @endif
-        <input type="submit" value="Create" class="border p-1 rounded bg-blue-500 text-white w-1/4">
+        <div class="pt-6">
+            <input type="submit" value="Create" class="border p-1 rounded bg-blue-500 text-white w-1/4">
+        </div>
     </form>
 </div>

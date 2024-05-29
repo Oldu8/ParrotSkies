@@ -1,6 +1,3 @@
-@php
-    //dd($categories);
-@endphp
 @extends('admin.layout.main')
 @section('content')
 
