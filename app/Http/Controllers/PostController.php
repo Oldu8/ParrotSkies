@@ -25,7 +25,7 @@ class PostController extends Controller
     public function store(SaveRequest $request)
     {
         $post = Post::create($request->validated());
-        return redirect('admin/posts/' . $post->id);
+        return redirect('admin/posts/')->with('success', 'Post created!');
     }
 
     public function show(string $id)
@@ -49,10 +49,10 @@ class PostController extends Controller
     //     return redirect()->route('posts.show', $post->id)->with('success', 'Updated Successfully!');
     // }
 
-    // public function destroy(string $id)
-    // {
-    //     $post = Post::findOrFail($id);
-    //     $post->delete();
-    //     return redirect('/posts')->with('success', 'Post deleted successfully');
-    // }
+    public function destroy(string $id)
+    {
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect('/admin/posts')->with('success', 'Post deleted successfully');
+    }
 }
