@@ -58,9 +58,8 @@ class PostController extends Controller
     public function toggleActive(PostStatusRequest $request, string $id)
     {
         $data = $request->validated();
-        // dd($data);
         $post = Post::findOrFail($id);
         $post->update(['active' => $data['active'] === 'true']);
-        return redirect()->back();
+        return response()->json(['status' => 'success', 'active' => $post->active]);
     }
 }

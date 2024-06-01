@@ -60,7 +60,8 @@
                                 <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
                                     <div class="toggle-switch">
                                         @csrf
-                                        <input type="checkbox" id="status toggle-active-{{ $post->id }}" name="active" value="1"
+                                        <input type="hidden" name="active" value="0">
+                                        <input type="checkbox" id="toggle-active-{{ $post->id }}" name="active" value="1"
                                             data-route="{{ route('posts.toggle-active', ['post' => $post->id]) }}"
                                             @if($post->active) checked @endif>
                                         <label for="toggle-active-{{ $post->id }}" class="toggle-label">
@@ -102,51 +103,33 @@
 
 @section('js')
 <script>
-    console.log('hello world')
-    // const toggleActive = document.getElementById('status');
-    // console.log(toggleActive);
-    // toggleActive.addEventListener('change', (event) => {
-    //     const active = event.target.checked;
-    //     console.log(active)
-    //     const route = event.target.dataset.route;
-    //     fetch(route, {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Accept': 'application/json',
-    //             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    //         },
-    //         body: JSON.stringify({
-    //             active
-    //         })
-    //     })
-    // })
-    // document.addEventListener('DOMContentLoaded', function () {
-    //     document.querySelectorAll('.toggle-switch input[type="checkbox"]').forEach(function (toggle) {
-    //         toggle.addEventListener('change', function () {
-    //             let route = this.dataset.route;
-    //             let csrfToken = document.querySelector('input[name="_token"]').value;
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.toggle-switch input[type="checkbox"]').forEach(function (toggle) {
+            toggle.addEventListener('change', function () {
+                let route = this.dataset.route;
+                let csrfToken = document.querySelector('input[name="_token"]').value;
 
-    //             fetch(route, {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     'X-CSRF-TOKEN': csrfToken,
-    //                 },
-    //                 body: JSON.stringify({
-    //                     active: this.checked ? 1 : 0
-    //                 })
-    //             })
-    //                 .then(response => response.json())
-    //                 .then(data => {
-    //                     console.log('Success:', data);
-    //                 })
-    //                 .catch((error) => {
-    //                     console.error('Error:', error);
-    //                 });
-    //         });
-    //     });
-    // });
+                console.log(csrfToken)
+                fetch(route, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+                    body: JSON.stringify({
+                        active: this.checked ? 1 : 0
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+    });
 </script>
 
 @endSection
