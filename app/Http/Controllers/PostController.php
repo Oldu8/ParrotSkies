@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Http\Requests\Posts\SaveRequest;
-
+use App\Http\Requests\Posts\PostStatusRequest;
 
 class PostController extends Controller
 {
@@ -54,5 +54,13 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->delete();
         return redirect('/admin/posts')->with('success', 'Post deleted successfully');
+    }
+    public function toggleActive(PostStatusRequest $request, string $id)
+    {
+        $data = $request->validated();
+        // dd($data);
+        $post = Post::findOrFail($id);
+        $post->update(['active' => $data['active'] === 'true']);
+        return redirect()->back();
     }
 }
