@@ -103,33 +103,33 @@
 
 @section('js')
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.toggle-switch input[type="checkbox"]').forEach(function (toggle) {
-            toggle.addEventListener('change', function () {
-                let route = this.dataset.route;
-                let csrfToken = document.querySelector('input[name="_token"]').value;
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     document.querySelectorAll('.toggle-switch input[type="checkbox"]').forEach(function (toggle) {
+    //         toggle.addEventListener('change', function () {
+    //             let route = this.dataset.route;
+    //             let csrfToken = document.querySelector('input[name="_token"]').value;
 
-                console.log(csrfToken)
-                fetch(route, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken,
-                    },
-                    body: JSON.stringify({
-                        active: this.checked ? 1 : 0
-                    })
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Success:', data);
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-            });
-        });
-    });
+    //             console.log(csrfToken)
+    //             fetch(route, {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'X-CSRF-TOKEN': csrfToken,
+    //                 },
+    //                 body: JSON.stringify({
+    //                     active: this.checked ? 1 : 0
+    //                 })
+    //             })
+    //                 .then(response => response.json())
+    //                 .then(data => {
+    //                     console.log('Success:', data);
+    //                 })
+    //                 .catch((error) => {
+    //                     console.error('Error:', error);
+    //                 });
+    //         });
+    //     });
+    // });
 </script>
 
 @endSection
