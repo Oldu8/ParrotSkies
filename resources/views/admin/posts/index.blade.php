@@ -103,33 +103,39 @@
 
 @section('js')
 <script>
-    // document.addEventListener('DOMContentLoaded', function () {
-    //     document.querySelectorAll('.toggle-switch input[type="checkbox"]').forEach(function (toggle) {
-    //         toggle.addEventListener('change', function () {
-    //             let route = this.dataset.route;
-    //             let csrfToken = document.querySelector('input[name="_token"]').value;
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.toggle-switch input[type="checkbox"]').forEach(function (toggle) {
+            toggle.addEventListener('change', function () {
+                let route = this.dataset.route;
+                let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                let activeStatus = this.checked ? 'true' : 'false';
 
-    //             console.log(csrfToken)
-    //             fetch(route, {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     'X-CSRF-TOKEN': csrfToken,
-    //                 },
-    //                 body: JSON.stringify({
-    //                     active: this.checked ? 1 : 0
-    //                 })
-    //             })
-    //                 .then(response => response.json())
-    //                 .then(data => {
-    //                     console.log('Success:', data);
-    //                 })
-    //                 .catch((error) => {
-    //                     console.error('Error:', error);
-    //                 });
-    //         });
-    //     });
-    // });
+                fetch(route, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+                    body: JSON.stringify({
+                        active: activeStatus
+                    })
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        alert('An error occurred: ' + error.message);
+                    });
+            });
+        });
+    });
 </script>
 
 @endSection
