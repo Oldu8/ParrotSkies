@@ -34,9 +34,40 @@ body {
 .input-group {
     display: flex;
     flex-direction: column;
-    /* gap: 10px; */
-    /* align-items: center; */
+    gap: 10px;
 }
+
+.input-group label {
+    font-weight: bold;
+    color: #4a5568; /* Tailwind's text-gray-700 */
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+    background-color: #f7fafc; /* Tailwind's bg-gray-100 */
+    border: 1px solid #e2e8f0; /* Tailwind's border-gray-300 */
+    border-radius: 0.375rem; /* Tailwind's rounded-md */
+    padding: 0.5rem;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-size: 1rem;
+    color: #2d3748; /* Tailwind's text-gray-800 */
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+    background-color: #ffffff; /* Tailwind's bg-white */
+    border-color: #3182ce; /* Tailwind's border-blue-500 */
+    outline: none;
+}
+
+.input-group :disabled {
+    background-color: #e2e8f0; /* Tailwind's bg-gray-300 */
+    border: 1px solid #cbd5e0; /* Tailwind's border-gray-400 */
+    cursor: not-allowed;
+}
+
 /* Toggle switch container */
 .toggle-switch {
     position: relative;
