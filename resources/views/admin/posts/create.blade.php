@@ -3,6 +3,7 @@
 @endphp
 @extends('admin.layout.main')
 @section('content')
+@include('admin.layout.alert')
 
 <div class="container">
     <div class='ml-4 mt-4 p-4'>

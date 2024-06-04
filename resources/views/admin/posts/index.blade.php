@@ -1,6 +1,8 @@
 @extends('admin.layout.main')
 
 @section('content')
+@include('admin.layout.alert')
+
 <div class='p-4'>
     <div class="flex justify-between">
         <a href="/admin/welcome" class="text-white hover:underline bg-blue-500 text-white font-bold py-2 px-4 rounded">
