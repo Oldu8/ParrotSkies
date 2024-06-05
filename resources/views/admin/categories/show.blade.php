@@ -1,6 +1,3 @@
-@php
-    //dd($categories);
-@endphp
 @extends('admin.layout.main')
 @section('content')
 @include('admin.layout.alert')
@@ -13,7 +10,7 @@
                 Back
             </button>
         </div>
-        @include('admin.posts.form')
+        @include('admin.categories.form')
     </div>
 </div>
 @endSection

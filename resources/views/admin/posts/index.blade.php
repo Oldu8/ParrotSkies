@@ -5,8 +5,10 @@
 
 <div class='p-4'>
     <div class="flex justify-between">
-        <a href="/admin/welcome" class="text-white hover:underline bg-blue-500 text-white font-bold py-2 px-4 rounded">
-            Back</a>
+        <button onclick="history.back()"
+            class="text-white hover:underline bg-blue-500 text-white font-bold py-2 px-4 rounded">
+            Back
+        </button>
         <a href="/admin/posts/create"
             class="text-white hover:underline bg-blue-500 text-white font-bold py-2 px-4 rounded">
             Create Post

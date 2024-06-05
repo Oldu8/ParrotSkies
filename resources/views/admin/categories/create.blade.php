@@ -13,7 +13,7 @@
                 Back
             </button>
         </div>
-        @include('admin.posts.form')
+        @include('admin.categories.form')
     </div>
 </div>
 @endSection
