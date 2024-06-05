@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
-use App\Http\Requests\Posts\SaveRequest;
+use App\Http\Requests\Posts\PostSaveRequest;
 use App\Http\Requests\Posts\PostStatusRequest;
 
 class PostController extends Controller
@@ -22,7 +22,7 @@ class PostController extends Controller
         return view('admin.posts.create', compact('categories'));
     }
 
-    public function store(SaveRequest $request)
+    public function store(PostSaveRequest $request)
     {
         $post = Post::create($request->validated());
         return redirect('admin/posts/')->with('success', 'Post created!');

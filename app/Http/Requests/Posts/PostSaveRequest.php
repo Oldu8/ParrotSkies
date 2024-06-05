@@ -5,7 +5,7 @@ namespace App\Http\Requests\Posts;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class SaveRequest extends FormRequest
+class PostSaveRequest extends FormRequest
 {
     public function authorize(): bool
     {
