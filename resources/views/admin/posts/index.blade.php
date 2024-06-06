@@ -23,38 +23,31 @@
                 <table class="min-w-full bg-white">
                     <thead>
                         <tr class="bg-gray-800 text-white text-left uppercase tracking-wider">
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4 ">
-                                ID</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4">
-                                Title</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4">
-                                Category</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4">
-                                Slug</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4">
-                                Status</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4">
-                                Published At</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4">
-                                Actions</th>
+                            <th class="px-2 sm:px-4 py-3 border-b-2 border-gray-300 text-xs leading-4">ID</th>
+                            <th class="px-2 sm:px-4 py-3 border-b-2 border-gray-300 text-xs leading-4">Title</th>
+                            <th class="px-2 sm:px-4 py-3 border-b-2 border-gray-300 text-xs leading-4">Category</th>
+                            <th class="px-2 sm:px-4 py-3 border-b-2 border-gray-300 text-xs leading-4">Slug</th>
+                            <th class="px-2 sm:px-4 py-3 border-b-2 border-gray-300 text-xs leading-4">Status</th>
+                            <th class="px-2 sm:px-4 py-3 border-b-2 border-gray-300 text-xs leading-4">Published At</th>
+                            <th class="px-2 sm:px-4 py-3 border-b-2 border-gray-300 text-xs leading-4">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white">
                         @foreach ($posts as $post)
                             <tr class="{{ $loop->odd ? 'bg-gray-100' : 'bg-gray-200' }}">
-                                <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
+                                <td class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
                                     {{ $post->id }}
                                 </td>
-                                <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
+                                <td class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
                                     {{ $post->title }}
                                 </td>
-                                <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
+                                <td class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
                                     {{ $post->category->name }}
                                 </td>
-                                <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
+                                <td class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
                                     {{ $post->slug }}
                                 </td>
-                                <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
+                                <td class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
                                     <div class="toggle-switch">
                                         @csrf
                                         <input type="hidden" name="active" value="0">
@@ -67,23 +60,24 @@
                                         </label>
                                     </div>
                                 </td>
-                                <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
+                                <td class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
                                     {{ $post->published_at }}
                                 </td>
-                                <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900 space-x-2">
+                                <td
+                                    class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900 space-x-1 sm:space-x-2">
                                     <a href="{{ route('posts.show', $post->id) }}"
-                                        class="leading-4 text-sm  text-white bg-green-500 hover:underline py-2 px-4 rounded">
+                                        class="leading-4 text-sm text-white bg-green-500 hover:bg-green-600 py-1 px-2 sm:py-2 sm:px-4 rounded">
                                         Show
                                     </a>
                                     <a href="{{ route('posts.show', $post->id) }}"
-                                        class="leading-4 text-sm text-white bg-violet-500 hover:underline py-2 px-4 rounded">
+                                        class="leading-4 text-sm text-white bg-violet-500 hover:bg-violet-600 py-1 px-2 sm:py-2 sm:px-4 rounded">
                                         View
                                     </a>
                                     <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="leading-4 text-sm text-white bg-red-500 hover:underline py-2 px-4 rounded">
+                                            class="leading-4 text-sm text-white bg-red-500 hover:bg-red-600 py-1 px-2 sm:py-2 sm:px-4 rounded">
                                             Delete
                                         </button>
                                     </form>
