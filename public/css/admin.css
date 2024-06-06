@@ -63,8 +63,8 @@ body {
 }
 
 .input-group :disabled {
-    background-color: #e2e8f0; /* Tailwind's bg-gray-300 */
-    border: 1px solid #cbd5e0; /* Tailwind's border-gray-400 */
+    background-color: #d5d8db; /* Tailwind's bg-gray-300 */
+    border: 1px solid #80858a; /* Tailwind's border-gray-400 */
     cursor: not-allowed;
 }
 

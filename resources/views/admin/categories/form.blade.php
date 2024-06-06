@@ -14,7 +14,7 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="input-group">
             <strong>Name:</strong>
-            <input name="title" type="text" placeholder="Title" class="border p-1 rounded"
+            <input name="title" type="text" placeholder="Title" class="border p-1 rounded max-w-md"
                 value="{{ $category->name ?? old('name') }}" @if(!$isNew) disabled @endif>
         </div>
         <div class="input-group">
@@ -23,6 +23,32 @@
             disabled @endif>
         </div>
 </div>
+@if(isset($posts) && count($posts) > 0)
+    <div class="pt-6 mb-2">
+        <h3 class="text-gray-600 text-lg mb-2">List of posts in this category</h3>
+        <table class="w-full border-collapse">
+            <thead>
+                <tr class="bg-gray-800 text-white text-left">
+                    <th class="p-2">ID</th>
+                    <th class="p-2">Title</th>
+                    <th class="p-2">Slug</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($posts as $post)
+                    <tr class="{{ $loop->odd ? 'bg-gray-100' : 'bg-gray-200' }}">
+                        <td class="p-2 border-b">{{ $post->id }}</td>
+                        <td class="p-2 border-b">
+                            <a class="hover:text-blue-500 underline"
+                                href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
+                        </td>
+                        <td class="p-2 border-b">{{ $post->slug }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@endif
 <div class="pt-6">
     @if($isNew)
         <input type="submit" value="Create" class="border p-1 rounded bg-blue-500 text-white w-1/4">
@@ -33,4 +59,6 @@
     @endif
 </div>
 </form>
+
+
 </div>

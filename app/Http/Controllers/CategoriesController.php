@@ -27,12 +27,14 @@ class CategoriesController extends Controller
 
     //  add list of posts for this category in show method
 
-    // public function show(string $id)
-    // {
-    //     $post = Category::findOrFail($id);
-    //     $categories = Category::all()->pluck('name', 'id');
-    //     return view('admin.posts.show', compact('post', 'categories'));
-    // }
+    public function edit(string $id)
+    {
+        $category = Category::findOrFail($id);
+        $posts = $category->posts;
+        // dd($posts);
+        // $categories = Category::all()->pluck('name', 'id');
+        return view('admin.categories.edit', compact('category', 'posts'));
+    }
 
 
     public function destroy(string $id)

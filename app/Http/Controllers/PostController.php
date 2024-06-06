@@ -32,7 +32,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $categories = Category::all()->pluck('name', 'id');
-        return view('admin.posts.show', compact('post', 'categories'));
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     // public function edit(string $id)
