@@ -25,8 +25,6 @@ class CategoriesController extends Controller
         return redirect('admin/categories/')->with('success', 'Category created!');
     }
 
-    //  add list of posts for this category in show method
-
     public function edit(string $id)
     {
         $category = Category::findOrFail($id);
@@ -36,6 +34,12 @@ class CategoriesController extends Controller
         return view('admin.categories.edit', compact('category', 'posts'));
     }
 
+    public function update(CategoriesSaveRequest $request, string $id)
+    {
+        $category = Category::findOrFail($id);
+        $category->update($request->validated());
+        return redirect('admin/categories/')->with('success', 'Category updated!');
+    }
 
     public function destroy(string $id)
     {

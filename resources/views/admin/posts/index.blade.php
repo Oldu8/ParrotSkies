@@ -22,33 +22,26 @@
             <div class="overflow-x-auto">
                 <table class="min-w-full bg-white">
                     <thead>
-                        <tr>
-                            <th
-                                class="px-6 py-3 border-b-2 border-gray-300 bg-gray-50 text-left text-xs leading-4 text-gray-600 uppercase tracking-wider">
+                        <tr class="bg-gray-800 text-white text-left uppercase tracking-wider">
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4 ">
                                 ID</th>
-                            <th
-                                class="px-6 py-3 border-b-2 border-gray-300 bg-gray-50 text-left text-xs leading-4 text-gray-600 uppercase tracking-wider">
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4">
                                 Title</th>
-                            <th
-                                class="px-6 py-3 border-b-2 border-gray-300 bg-gray-50 text-left text-xs leading-4 text-gray-600 uppercase tracking-wider">
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4">
                                 Category</th>
-                            <th
-                                class="px-6 py-3 border-b-2 border-gray-300 bg-gray-50 text-left text-xs leading-4 text-gray-600 uppercase tracking-wider">
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4">
                                 Slug</th>
-                            <th
-                                class="px-6 py-3 border-b-2 border-gray-300 bg-gray-50 text-left text-xs leading-4 text-gray-600 uppercase tracking-wider">
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4">
                                 Status</th>
-                            <th
-                                class="px-6 py-3 border-b-2 border-gray-300 bg-gray-50 text-left text-xs leading-4 text-gray-600 uppercase tracking-wider">
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4">
                                 Published At</th>
-                            <th
-                                class="px-6 py-3 border-b-2 border-gray-300 bg-gray-50 text-left text-xs leading-4 text-gray-600 uppercase tracking-wider">
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-xs leading-4">
                                 Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white">
                         @foreach ($posts as $post)
-                            <tr>
+                            <tr class="{{ $loop->odd ? 'bg-gray-100' : 'bg-gray-200' }}">
                                 <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
                                     {{ $post->id }}
                                 </td>

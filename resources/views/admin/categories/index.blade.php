@@ -58,7 +58,7 @@
                                 <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900 space-x-2">
                                     <a href="{{ route('categories.edit', $category->id) }}"
                                         class="leading-4 text-sm  text-white bg-green-500 hover:underline py-2 px-4 rounded">
-                                        Show
+                                        Edit
                                     </a>
                                     <a href="{{ route('categories.show', $category->id) }}"
                                         class="leading-4 text-sm text-white bg-violet-500 hover:underline py-2 px-4 rounded">

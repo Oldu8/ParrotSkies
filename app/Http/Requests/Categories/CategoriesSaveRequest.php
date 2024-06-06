@@ -15,11 +15,11 @@ class CategoriesSaveRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:5|max:64',
+            'name' => ['required', 'min:5', 'max:64'],
             'slug' => [
                 'required',
                 'string',
-                Rule::unique('categories', 'slug')->ignore($this->id),
+                Rule::unique('categories', 'slug')->ignore($this->route('category')),
             ],
 
         ];

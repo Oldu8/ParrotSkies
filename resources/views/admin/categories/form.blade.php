@@ -14,13 +14,13 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="input-group">
             <strong>Name:</strong>
-            <input name="title" type="text" placeholder="Title" class="border p-1 rounded max-w-md"
+            <input name="name" id="nameInput" type="text" placeholder="Name" class="border p-1 rounded max-w-md"
                 value="{{ $category->name ?? old('name') }}" @if(!$isNew) disabled @endif>
         </div>
         <div class="input-group">
             <strong>Set your slug:</strong>
-            <input type="text" name="slug" value="{{ $category->slug ?? '' }}" style="width: 300px" @if(!$isNew)
-            disabled @endif>
+            <input name="slug" id="slugInput" type="text" placeholder="Slug" class="border p-1 rounded max-w-md"
+                value="{{ $category->slug ?? '' }}" @if(!$isNew) disabled @endif>
         </div>
 </div>
 @if(isset($posts) && count($posts) > 0)
@@ -62,3 +62,14 @@
 
 
 </div>
+
+@section('js')
+<script>
+    document.getElementById('editButton').addEventListener('click', function () {
+        document.getElementById('editButton').style.display = 'none';
+        document.getElementById('saveButton').style.display = 'block';
+        document.getElementById('nameInput').disabled = false;
+        document.getElementById('slugInput').disabled = false;
+    });
+</script>
+@endsection
