@@ -25,7 +25,7 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('client.home');
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::view('/welcome', 'admin.welcome')->name('admin.welcome'); // sdelat home controller hz nahuya kone4no
+    Route::view('/welcome', 'admin.welcome')->name('admin.welcome');
     // Route::get('/posts', [PostController::class, 'index'])->name('admin.posts.index');
     Route::resource('posts', PostController::class);
     Route::post('/posts/{post}/post-status', [PostController::class, 'toggleActive'])->name('posts.toggle-active');
