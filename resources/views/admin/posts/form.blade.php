@@ -14,13 +14,13 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="input-group">
             <strong>Title:</strong>
-            <input name="title" type="text" placeholder="Title" class="border p-1 rounded"
+            <input name="title" type="text" placeholder="Title" id="titleInput" class="border p-1 rounded"
                 value="{{ $post->title ?? old('title') }}" @if(!$isNew) disabled @endif>
         </div>
         <div class="input-group">
             <strong>Description:</strong>
-            <textarea rows="3" name="content" placeholder="Description" class="border p-1 rounded" @if(!$isNew) disabled
-            @endif>{{ $post->content ?? old('content') }}</textarea>
+            <textarea id="contentInput" rows=" 3" name="content" placeholder="Description" class="border p-1 rounded"
+                @if(!$isNew) disabled @endif>{{ $post->content ?? old('content') }}</textarea>
 
         </div>
         <div class="input-group">
@@ -38,7 +38,8 @@
         <div class="grid grid-cols-2 gap-4">
             <div class="input-group">
                 <strong>Select category:</strong>
-                <select name="category_id" class="border p-1 rounded" style="width: 300px" @if(!$isNew) disabled @endif>
+                <select id="categoryInput" name="category_id" class="border p-1 rounded" style="width: 300px"
+                    @if(!$isNew) disabled @endif>
                     @foreach($categories as $key => $category)
                         <option class="border p-1 rounded" value="{{ $key }}" @if(isset($post) && $post->category_id == $key)
                         selected @endif>{{ $category }}</option>
@@ -47,19 +48,20 @@
             </div>
             <div class="input-group">
                 <strong>Select an image:</strong>
-                <input type="text" name="thumbnail" value="{{ $post->thumbnail ?? '' }}" style="width: 300px"
-                    @if(!$isNew) disabled @endif>
+                <input id="imageInput" type="text" name="thumbnail" value="{{ $post->thumbnail ?? '' }}"
+                    style="width: 300px" @if(!$isNew) disabled @endif>
             </div>
             <div class="input-group">
                 <strong>Set your slug:</strong>
-                <input type="text" name="slug" value="{{ $post->slug ?? '' }}" style="width: 300px" @if(!$isNew)
+                <input id="slugInput" type="text" name="slug" value="{{ $post->slug ?? '' }}" style="width: 300px" @if(!$isNew)
                 disabled @endif>
             </div>
             <div class="input-group">
                 <strong>Select time of publishing:</strong>
                 <!-- <input type="datetime-local" name="published_at" style="width: 300px"> -->
-                <input type="datetime-local" name="published_at" value="{{ isset($post) ? $post->published_at : '' }}"
-                    style="width: 300px" @if(!$isNew) disabled @endif>
+                <input id="publishedInput" type="datetime-local" name="published_at"
+                    value="{{ isset($post) ? $post->published_at : '' }}" style="width: 300px" @if(!$isNew) disabled
+                    @endif>
 
             </div>
         </div>
@@ -74,3 +76,20 @@
         </div>
     </form>
 </div>
+
+@section('js')
+<script>
+    const editButton = document.getElementById('editButton');
+    const saveButton = document.getElementById('saveButton');
+    editButton.addEventListener('click', () => {
+        editButton.style.display = 'none';
+        saveButton.style.display = 'block';
+        document.getElementById('titleInput').disabled = false;
+        document.getElementById('contentInput').disabled = false;
+        document.getElementById('categoryInput').disabled = false;
+        document.getElementById('imageInput').disabled = false;
+        document.getElementById('slugInput').disabled = false;
+        document.getElementById('publishedInput').disabled = false;
+    })
+</script>
+@endSection

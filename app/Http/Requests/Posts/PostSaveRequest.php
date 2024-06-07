@@ -20,7 +20,7 @@ class PostSaveRequest extends FormRequest
             'slug' => [
                 'required',
                 'string',
-                Rule::unique('posts', 'slug')->ignore($this->id),
+                Rule::unique('posts', 'slug')->ignore($this->route('post')),
             ],
             'active' => 'boolean',
             'thumbnail' => 'string|max:2048',

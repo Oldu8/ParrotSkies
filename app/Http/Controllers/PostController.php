@@ -28,26 +28,19 @@ class PostController extends Controller
         return redirect('admin/posts/')->with('success', 'Post created!');
     }
 
-    public function show(string $id)
+    public function edit(string $id)
     {
         $post = Post::findOrFail($id);
         $categories = Category::all()->pluck('name', 'id');
         return view('admin.posts.edit', compact('post', 'categories'));
     }
 
-    // public function edit(string $id)
-    // {
-    //     $post = Post::findOrFail($id);
-    //     // return view('posts.edit', ['post' => $post]); // same as below
-    //     return view('posts.edit', compact('post'));
-    // }
-
-    // public function update(SaveRequest $request, string $id)
-    // {
-    //     $post = Post::findOrFail($id);
-    //     $post->update($request->validated());
-    //     return redirect()->route('posts.show', $post->id)->with('success', 'Updated Successfully!');
-    // }
+    public function update(PostSaveRequest $request, string $id)
+    {
+        $post = Post::findOrFail($id);
+        $post->update($request->validated());
+        return redirect()->route('posts.index', $post->id)->with('success', 'Updated Successfully!');
+    }
 
     public function destroy(string $id)
     {

@@ -10,7 +10,7 @@
                 Back
             </button>
             <a href="/admin/categories/delete/{{ $category->id }}"
-                class="text-white hover:underline bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                class="text-white hover:underline bg-red-500 text-white font-bold py-2 px-4 rounded">
                 Delete Category
             </a>
         </div>

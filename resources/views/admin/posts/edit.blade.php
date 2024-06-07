@@ -9,6 +9,10 @@
                 class="text-white hover:underline bg-blue-500 text-white font-bold py-2 px-4 rounded">
                 Back
             </button>
+            <a href="/admin/posts/delete/{{ $post->id }}"
+                class="text-white hover:underline bg-red-500 text-white font-bold py-2 px-4 rounded">
+                Delete Post
+            </a>
         </div>
         @include('admin.posts.form')
     </div>
