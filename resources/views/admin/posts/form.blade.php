@@ -17,6 +17,7 @@
             <input name="title" type="text" placeholder="Title" id="titleInput" class="border p-1 rounded"
                 value="{{ $post->title ?? old('title') }}" @if(!$isNew) disabled @endif>
         </div>
+        <!-- Get plagin to make data for description editable -->
         <div class="input-group">
             <strong>Description:</strong>
             <textarea id="contentInput" rows=" 3" name="content" placeholder="Description" class="border p-1 rounded"
@@ -46,6 +47,7 @@
                     @endforeach
                 </select>
             </div>
+            <!-- TODO: make it saves img to storage -->
             <div class="input-group">
                 <strong>Select an image:</strong>
                 <input id="imageInput" type="text" name="thumbnail" value="{{ $post->thumbnail ?? '' }}"
@@ -56,6 +58,7 @@
                 <input id="slugInput" type="text" name="slug" value="{{ $post->slug ?? '' }}" style="width: 300px" @if(!$isNew)
                 disabled @endif>
             </div>
+            <!-- TODO: make this data sets as in DB -->
             <div class="input-group">
                 <strong>Select time of publishing:</strong>
                 <!-- <input type="datetime-local" name="published_at" style="width: 300px"> -->
