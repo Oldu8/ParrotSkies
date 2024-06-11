@@ -20,7 +20,7 @@
 <body>
     <div id="app">
         <div class="container mx-auto flex flex-col min-h-screen justify-between">
-            @include('layouts.header')
+            @include('client.layouts.header')
             <div class="py-2">
                 @yield('content')
             </div>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('client.layouts.app')
 
 <!-- add pages for posts and categories with simple styles -->
 
