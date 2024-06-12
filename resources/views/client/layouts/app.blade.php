@@ -19,12 +19,12 @@
 
 <body>
     <div id="app">
-        <div class="container mx-auto flex flex-col min-h-screen justify-between">
+        <div class="container mx-auto flex flex-col min-h-screen justify-start">
             @include('client.layouts.header')
             <div class="py-2">
                 @yield('content')
             </div>
-            <footer class="py-2 flex justify-between">
+            <footer class="py-2 flex justify-between mt-auto">
                 <p>© 2024 Parrot Skies. All rights reserved.</p>
                 <p>Made by Oldu</p>
             </footer>

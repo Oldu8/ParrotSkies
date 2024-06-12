@@ -32,7 +32,7 @@ class ClientController extends Controller
 
     public function showAllCategories(): View
     {
-        $categories = Category::all();
+        $categories = Category::all()->pluck('name', 'id');
         return view('client.categories.index', compact('categories'));
     }
 }
