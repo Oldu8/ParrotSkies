@@ -3,7 +3,7 @@
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +22,9 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('client.home');
+Route::get('/', [ClientController::class, 'index'])->name('client.home');
+Route::get('/posts', [ClientController::class, 'showAllPosts'])->name('client.all-posts');
+Route::get('/categories', [ClientController::class, 'showAllCategories'])->name('client.all-categories');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::view('/welcome', 'admin.welcome')->name('admin.welcome');
