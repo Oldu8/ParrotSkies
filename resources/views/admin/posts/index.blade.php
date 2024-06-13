@@ -87,10 +87,13 @@
                     </tbody>
                 </table>
             </div>
+            <div class="mt-4">
+                {{ $posts->links() }}
+            </div>
         </div>
     @endif
 </div>
-@endSection
+@endsection
 
 @section('js')
 <script>
@@ -129,4 +132,4 @@
     });
 </script>
 
-@endSection
+@endsection

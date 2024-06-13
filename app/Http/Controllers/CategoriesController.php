@@ -10,7 +10,9 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $categories = Category::withCount('posts')->get();
+        // $categories = Category::withCount('posts')->get();
+        // $posts = Post::paginate(10);
+        $categories = Category::withCount('posts')->paginate(10);
         return view('admin.categories.index', compact('categories'));
     }
 
