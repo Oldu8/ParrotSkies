@@ -31,7 +31,7 @@
             <ul class="space-y-4">
                 @foreach($posts as $post)
                     <li class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition duration-200">
-                        <a href="{{ route('posts.show', $post->slug) }}"
+                        <a href="{{ route('client.post.show', $post->slug) }}"
                             class="block font-semibold text-xl text-blue-600 hover:text-blue-700 transition duration-200">
                             {{ $post->title }}
                         </a>

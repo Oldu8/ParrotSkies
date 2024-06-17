@@ -25,6 +25,7 @@ Auth::routes();
 Route::get('/', [ClientController::class, 'index'])->name('client.home');
 Route::get('/posts', [ClientController::class, 'showAllPosts'])->name('client.all-posts');
 Route::get('/categories', [ClientController::class, 'showAllCategories'])->name('client.all-categories');
+Route::get('/posts/{slug}', [ClientController::class, 'showPostBySlug'])->name('client.post.show');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::view('/welcome', 'admin.welcome')->name('admin.welcome');

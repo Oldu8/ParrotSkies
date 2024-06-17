@@ -36,6 +36,14 @@ class ClientController extends Controller
         return view('client.posts.index', compact('posts', 'categories'));
     }
 
+    public function showPostBySlug($slug): View
+    {
+        // Fetch the post by slug
+        $post = Post::where('slug', $slug)->firstOrFail();
+
+        // Return the view with the post
+        return view('client.posts.show', compact('post'));
+    }
     public function showAllCategories(): View
     {
         $categories = Category::all()->pluck('name', 'id');
