@@ -27,7 +27,8 @@ class ClientController extends Controller
     public function showAllPosts(): View
     {
         $posts = Post::all();
-        return view('client.posts.index', compact('posts'));
+        $categories = Category::all()->pluck('name', 'id');
+        return view('client.posts.index', compact('posts', 'categories'));
     }
 
     public function showAllCategories(): View
