@@ -1,35 +1,48 @@
 @extends('client.layouts.app')
 
 @section('content')
-<div class="container mx-auto mt-8 px-4 sm:px-6 lg:px-8">
-    <div class="bg-white p-6 rounded-lg shadow-lg">
-        <h1 class="text-4xl font-bold mb-6 text-center text-gray-800">All posts</h1>
-        <!-- <div class="mb-4">
-            <h2 class="text-2xl font-semibold text-gray-700">List of categories:</h2>
-            <ul class="mt-4">
-                @foreach($categories as $key => $category)
-                    <li class="mb-2">
-                        <a href="/posts?category={{ $key }}"
-                            class="block underline font-semibold text-lg p-3 rounded hover:bg-gray-100 hover:text-blue-500 transition duration-200">
+<div class="container mx-auto mt-12 px-4 sm:px-6 lg:px-8">
+    <div class="bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-5xl font-bold mb-8 text-center text-gray-900">All posts</h1>
+
+        <!-- Filter Form -->
+        <div class="mb-8 flex justify-center">
+            <form method="GET" action="{{ route('client.all-posts') }}"
+                class="flex items-center space-x-4 bg-gray-100 p-4 rounded-lg shadow-sm">
+                <label for="category" class="text-lg font-semibold text-gray-700">Filter by Category:</label>
+                <select name="category" id="category"
+                    class="block w-64 p-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">All Categories</option>
+                    @foreach($categories as $key => $category)
+                        <option value="{{ $key }}" {{ request('category') == $key ? 'selected' : '' }}>
                             {{ $category }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-        </div> -->
+                        </option>
+                    @endforeach
+                </select>
+                <button type="submit"
+                    class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200">
+                    Filter
+                </button>
+            </form>
+        </div>
+
         <div>
-            <h2 class="text-2xl font-semibold text-gray-700">All our recent posts:</h2>
-            <ul class="mt-4">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">All our recent posts:</h2>
+            <ul class="space-y-4">
                 @foreach($posts as $post)
-                    <li class="mb-2">
-                        <a href="/posts?category={{ $post->slug }}"
-                            class="block underline font-semibold text-lg p-3 rounded hover:bg-gray-100 hover:text-blue-500 transition duration-200">
+                    <li class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition duration-200">
+                        <a href="{{ route('posts.show', $post->slug) }}"
+                            class="block font-semibold text-xl text-blue-600 hover:text-blue-700 transition duration-200">
                             {{ $post->title }}
                         </a>
                     </li>
                 @endforeach
             </ul>
 
+            <!-- Pagination Links -->
+            <div class="mt-8 flex justify-center gap-4">
+                {{ $posts->links() }}
+            </div>
         </div>
     </div>
 </div>

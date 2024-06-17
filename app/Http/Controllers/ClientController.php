@@ -24,10 +24,15 @@ class ClientController extends Controller
         return view('client.home');
     }
 
-    public function showAllPosts(): View
+    public function showAllPosts(Request $request): View
     {
-        $posts = Post::all();
-        $categories = Category::all()->pluck('name', 'id');
+        $category = $request->input('category');
+        if ($category) {
+            $posts = Post::where('category_id', $category)->paginate(10);
+        } else {
+            $posts = Post::paginate(10);
+        }
+        $categories = Category::pluck('name', 'id');
         return view('client.posts.index', compact('posts', 'categories'));
     }
 
