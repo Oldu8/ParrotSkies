@@ -10,9 +10,21 @@ use App\Http\Requests\Posts\PostStatusRequest;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::paginate(10);
+        // Get sorting parameters from the request
+        $sort = $request->get('sort', 'id'); // Default sort by 'id'
+        $order = $request->get('order', 'asc'); // Default order 'asc'
+
+        // Validate the sorting columns
+        $validSorts = ['id', 'title', 'category_id', 'slug', 'active', 'published_at'];
+        if (!in_array($sort, $validSorts)) {
+            $sort = 'id';
+        }
+
+        // Get the posts with sorting
+        $posts = Post::orderBy($sort, $order)->paginate(10);
+
         return view('admin.posts.index', compact('posts'));
     }
 
