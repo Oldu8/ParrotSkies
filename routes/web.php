@@ -34,3 +34,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/posts/{post}/post-status', [PostController::class, 'toggleActive'])->name('posts.toggle-active');
     Route::resource('categories', CategoriesController::class);
 });
+
+// login in admin panel
+// description format
+// time format
+// tags
+// likes 
+// comments
