@@ -25,6 +25,8 @@ Route::get('/categories', [ClientController::class, 'showAllCategories'])->name(
 Route::get('/posts/{slug}', [ClientController::class, 'showPostBySlug'])->name('client.post.show');
 
 Route::group(['prefix' => 'admin'], function () {
+
+
     Route::view('/welcome', 'admin.welcome')->name('admin.welcome');
     // Route::get('/posts', [PostController::class, 'index'])->name('admin.posts.index');
     Route::resource('posts', PostController::class);
