@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\AdminAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +27,23 @@ Route::get('/posts/{slug}', [ClientController::class, 'showPostBySlug'])->name('
 
 Route::group(['prefix' => 'admin'], function () {
 
+    Route::group(['middleware' => 'guest'], function () {
+        Route::get('/register', [AdminAuthController::class, 'register'])->name('register');
+        // Route::post('/register', [AdminAuthController::class, 'registerPost'])->name('register');
+        Route::get('/login', [AdminAuthController::class, 'login'])->name('login');
+        // Route::post('/login', [AdminAuthController::class, 'loginPost'])->name('login');
+    });
 
-    Route::view('/welcome', 'admin.welcome')->name('admin.welcome');
-    // Route::get('/posts', [PostController::class, 'index'])->name('admin.posts.index');
-    Route::resource('posts', PostController::class);
-    Route::post('/posts/{post}/post-status', [PostController::class, 'toggleActive'])->name('posts.toggle-active');
-    Route::resource('categories', CategoriesController::class);
+    Route::group(['middleware' => 'auth'], function () {
+        Route::delete('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+        Route::view('/welcome', 'admin.welcome')->name('admin.welcome');
+        // Route::get('/posts', [PostController::class, 'index'])->name('admin.posts.index');
+        Route::resource('posts', PostController::class);
+        Route::post('/posts/{post}/post-status', [PostController::class, 'toggleActive'])->name('posts.toggle-active');
+        Route::resource('categories', CategoriesController::class);
+    });
+
+
 });
 
 // login in admin panel
