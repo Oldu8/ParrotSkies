@@ -34,15 +34,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/login', [AdminAuthController::class, 'loginPost'])->name('admin-login');
     });
 
-    Route::group(['middleware' => 'auth'], function () {
-        Route::delete('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+    Route::group(['middleware' => 'auth:admin'], function () {
         Route::view('/welcome', 'admin.welcome')->name('admin.welcome');
-        // Route::get('/posts', [PostController::class, 'index'])->name('admin.posts.index');
+        Route::delete('/logout', [AdminAuthController::class, 'logout'])->name('logout');
         Route::resource('posts', PostController::class);
         Route::post('/posts/{post}/post-status', [PostController::class, 'toggleActive'])->name('posts.toggle-active');
         Route::resource('categories', CategoriesController::class);
     });
-
 
 });
 

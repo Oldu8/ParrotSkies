@@ -49,6 +49,9 @@
                     </button>
                 </div>
             </form>
+            <div class="mt-4 text-center ">
+                <a class="text-blue-500 hover:underline " href="{{ route('admin-login') }}">Sign in</a>
+            </div>
         </div>
     </div>
 </body>

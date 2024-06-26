@@ -39,7 +39,7 @@ class AdminAuthController extends Controller
             'password' => $request->password,
         ];
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('admin')->attempt($credentials)) {
             return redirect('/admin/welcome')->with('success', 'Login Success');
         }
 
