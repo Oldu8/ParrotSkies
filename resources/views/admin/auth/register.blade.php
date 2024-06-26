@@ -22,7 +22,7 @@
                     {{ Session::get('success') }}
                 </div>
             @endif
-            <form action="{{ route('register') }}" method="POST">
+            <form action="{{ route('admin-register') }}" method="POST">
                 @csrf
                 <div class="mb-4">
                     <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>

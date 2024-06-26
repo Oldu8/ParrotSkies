@@ -28,10 +28,10 @@ Route::get('/posts/{slug}', [ClientController::class, 'showPostBySlug'])->name('
 Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => 'guest'], function () {
-        Route::get('/register', [AdminAuthController::class, 'register'])->name('register');
-        // Route::post('/register', [AdminAuthController::class, 'registerPost'])->name('register');
-        Route::get('/login', [AdminAuthController::class, 'login'])->name('login');
-        // Route::post('/login', [AdminAuthController::class, 'loginPost'])->name('login');
+        Route::get('/register', [AdminAuthController::class, 'register'])->name('admin-register');
+        Route::post('/register', [AdminAuthController::class, 'registerPost'])->name('admin-register');
+        Route::get('/login', [AdminAuthController::class, 'login'])->name('admin-login');
+        Route::post('/login', [AdminAuthController::class, 'loginPost'])->name('admin-login');
     });
 
     Route::group(['middleware' => 'auth'], function () {
