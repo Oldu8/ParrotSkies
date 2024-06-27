@@ -19,6 +19,7 @@ class ClientController extends Controller
     //     $this->middleware('auth');
     // }
 
+    //TODO: do we need this ? 
     public function index(): View
     {
         return view('client.home');

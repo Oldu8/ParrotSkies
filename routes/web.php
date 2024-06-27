@@ -17,7 +17,6 @@ use App\Http\Controllers\AdminAuthController;
 |
 */
 
-
 Auth::routes();
 
 Route::get('/', [ClientController::class, 'index'])->name('client.home');
@@ -44,7 +43,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-// login in admin panel
 // description format
 // time format
 // tags
