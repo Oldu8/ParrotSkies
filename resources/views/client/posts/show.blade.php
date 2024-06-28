@@ -1,4 +1,5 @@
 @extends('client.layouts.app')
+@section('title', $post->title) 
 
 @section('content')
 <div class="container mx-auto mt-12 px-4 sm:px-6 lg:px-8">
