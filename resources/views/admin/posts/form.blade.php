@@ -17,13 +17,18 @@
             <input name="title" type="text" placeholder="Title" id="titleInput" class="border p-1 rounded"
                 value="{{ $post->title ?? old('title') }}" @if(!$isNew) disabled @endif>
         </div>
-        <!-- Get plagin to make data for description editable -->
+        <!-- Get plugin to make data for description editable -->
         <div class="input-group">
             <strong>Description:</strong>
             <textarea id="contentInput" rows=" 3" name="content" placeholder="Description" class="border p-1 rounded"
-                @if(!$isNew) disabled @endif>{{ $post->content ?? old('content') }}</textarea>
-
+                @if(!$isNew) disabled @endif>{{ $post->content ?? old('content') }}
+            </textarea>
         </div>
+        <div>
+        <div id="quillEditor" class="bg-white">
+            <p>Hello World!</p>
+        </div>
+    </form>
         <div class="input-group">
             <strong>Is Active:</strong>
             <div class="toggle-switch">
@@ -82,6 +87,10 @@
 
 @section('js')
 <script>
+      const quill = new Quill('#quillEditor', {
+        modules: { toolbar: true },
+    theme: 'snow'
+  });
     const editButton = document.getElementById('editButton');
     const saveButton = document.getElementById('saveButton');
     editButton.addEventListener('click', () => {
