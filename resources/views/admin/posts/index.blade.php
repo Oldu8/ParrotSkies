@@ -48,13 +48,17 @@
                         @foreach ($posts as $post)
                             <tr class="{{ $loop->odd ? 'bg-gray-100' : 'bg-gray-200' }}">
                                 <td class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
-                                    {{ $post->id }}</td>
+                                    {{ $post->id }}
+                                </td>
                                 <td class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
-                                    {{ $post->title }}</td>
+                                    {{ $post->title }}
+                                </td>
                                 <td class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
-                                    {{ $post->category->name }}</td>
+                                    {{ $post->category->name }}
+                                </td>
                                 <td class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
-                                    {{ $post->slug }}</td>
+                                    {{ $post->slug }}
+                                </td>
                                 <td class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
                                     <div class="toggle-switch">
                                         @csrf
@@ -69,13 +73,18 @@
                                     </div>
                                 </td>
                                 <td class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900">
-                                    {{ $post->published_at }}</td>
+                                    {{ $post->published_at }}
+                                </td>
                                 <td
                                     class="px-2 sm:px-4 py-4 border-b border-gray-300 text-sm leading-5 text-gray-900 space-x-1 sm:space-x-2">
                                     <a href="{{ route('posts.edit', $post->id) }}"
-                                        class="leading-4 text-sm text-white bg-green-500 hover:bg-green-600 py-1 px-2 sm:py-2 sm:px-4 rounded">Edit</a>
-                                    <a href="{{ route('posts.show', $post->id) }}"
-                                        class="leading-4 text-sm text-white bg-violet-500 hover:bg-violet-600 py-1 px-2 sm:py-2 sm:px-4 rounded">View</a>
+                                        class="leading-4 text-sm text-white bg-green-500 hover:bg-green-600 py-1 px-2 sm:py-2 sm:px-4 rounded">
+                                        Edit
+                                    </a>
+                                    <a href="{{ route('client.post.show', $post->slug) }}" target="_blank"
+                                        class="leading-4 text-sm text-white bg-violet-500 hover:bg-violet-600 py-1 px-2 sm:py-2 sm:px-4 rounded">
+                                        View
+                                    </a>
                                     <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')
