@@ -25,8 +25,8 @@
             </textarea>
         </div>
         <div>
+            <!-- need to upd for save in needed type -->
         <div id="quillEditor" class="bg-white">
-            <p>Hello World!</p>
         </div>
     </form>
         <div class="input-group">
