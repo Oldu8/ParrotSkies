@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Http\Requests\Posts\PostSaveRequest;
 use App\Http\Requests\Posts\PostStatusRequest;
+use Mews\Purifier\Facades\Purifier;
 
 class PostController extends Controller
 {
@@ -35,7 +36,13 @@ class PostController extends Controller
 
     public function store(PostSaveRequest $request)
     {
-        $post = Post::create($request->validated());
+        $validated = $request->validated();
+
+        $cleanContent = Purifier::clean($validated['content']);
+        $validated['content'] = $cleanContent;
+
+        Post::create($validated);
+
         return redirect('admin/posts/')->with('success', 'Post created!');
     }
 
@@ -49,8 +56,19 @@ class PostController extends Controller
     public function update(PostSaveRequest $request, string $id)
     {
         $post = Post::findOrFail($id);
-        $post->update($request->validated());
-        return redirect()->route('posts.index', $post->id)->with('success', 'Updated Successfully!');
+
+        // Validate the request
+        $validated = $request->validated();
+
+        // Sanitize the content
+        $cleanContent = Purifier::clean($validated['content']);
+        $validated['content'] = $cleanContent;
+
+        // Update the post with validated and sanitized data
+        $post->update($validated);
+
+        // Redirect with success message
+        return redirect()->route('posts.index')->with('success', 'Updated Successfully!');
     }
 
     public function destroy(string $id)

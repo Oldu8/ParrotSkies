@@ -15,8 +15,8 @@ class PostSaveRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|min:5|max:64',
-            'content' => 'required|min:5|max:2048',
+            'title' => 'required|min:5|max:255',
+            'content' => 'required|min:5',
             'slug' => [
                 'required',
                 'string',
