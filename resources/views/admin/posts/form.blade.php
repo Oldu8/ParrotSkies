@@ -18,22 +18,28 @@
                 value="{{ $post->title ?? old('title') }}" @if(!$isNew) disabled @endif>
         </div>
         <!-- Get plugin to make data for description editable -->
-        <div class="input-group">
+        <!-- <div class="input-group">
             <strong>Description:</strong>
             <textarea id="contentInput" rows=" 3" name="content" placeholder="Description" class="border p-1 rounded"
                 @if(!$isNew) disabled @endif>{{ $post->content ?? old('content') }}
             </textarea>
-        </div>
-        <div>
-        <div id="quillEditor" class="bg-white">
+        </div> -->
+        <div class="input-group my-4">
+            <strong>Description:</strong>
+            <div id="quillEditor" class="bg-white border p-1 rounded min-h-[200px]" >
+                {!! $post->content ?? old('content') !!}
+            </div>
+            <input type="hidden" name="content" id="contentInput">
         </div>
     </form>
         <div class="input-group">
             <strong>Is Active:</strong>
             <div class="toggle-switch">
                 <input type="hidden" name="active" value="0">
-                <input type="checkbox" id="active" name="active" value="1" @if(isset($post) && $post->active) checked
-                @endif @if(!$isNew) disabled @endif>
+                <input type="checkbox" id="active" name="active" value="1" 
+                @if(isset($post) && $post->active) checked @endif 
+                @if(!$isNew) disabled @endif
+                >
                 <label for="active" class="toggle-label">
                     <span class="toggle-inner"></span>
                     <span class="toggle-switch"></span>
@@ -44,7 +50,8 @@
             <div class="input-group">
                 <strong>Select category:</strong>
                 <select id="categoryInput" name="category_id" class="border p-1 rounded" style="width: 300px"
-                    @if(!$isNew) disabled @endif>
+                    @if(!$isNew) disabled @endif
+                    >
                     @foreach($categories as $key => $category)
                         <option class="border p-1 rounded" value="{{ $key }}" @if(isset($post) && $post->category_id == $key)
                         selected @endif>{{ $category }}</option>
@@ -88,8 +95,11 @@
 <script>
       const quill = new Quill('#quillEditor', {
         modules: { toolbar: true },
+        placeholder: 'Description',
+        readOnly: true,
     theme: 'snow'
   });
+  
     const editButton = document.getElementById('editButton');
     const saveButton = document.getElementById('saveButton');
     editButton.addEventListener('click', () => {
