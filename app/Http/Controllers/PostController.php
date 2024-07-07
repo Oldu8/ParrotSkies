@@ -57,17 +57,13 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        // Validate the request
         $validated = $request->validated();
 
-        // Sanitize the content
         $cleanContent = Purifier::clean($validated['content']);
         $validated['content'] = $cleanContent;
 
-        // Update the post with validated and sanitized data
         $post->update($validated);
 
-        // Redirect with success message
         return redirect()->route('posts.index')->with('success', 'Updated Successfully!');
     }
 
