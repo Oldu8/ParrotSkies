@@ -22,7 +22,10 @@
                 <img class="w-20" src="/img/logo.png" alt="logo parrot skies" />
                 <div class="flex flex-col gap-2 text-white">
                     <p class="font-bold">{{ Auth::guard('admin')->user()->name }}</p>
-                    <a class="underline" href="{{ route('admin-logout') }}">logout</a>
+                    <form action="{{ route('admin-logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="text-white">Logout</button>
+                    </form>
                 </div>
             </div>
             <div class="flex justify-between">

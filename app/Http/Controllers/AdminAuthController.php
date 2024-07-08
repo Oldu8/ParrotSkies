@@ -50,6 +50,6 @@ class AdminAuthController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('login');
+        return redirect()->route('admin-login');
     }
 }
