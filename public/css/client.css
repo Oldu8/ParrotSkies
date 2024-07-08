@@ -1,0 +1,75 @@
+/* Styles for HTML content within the .htmlSection class */
+.htmlSection h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.htmlSection h2 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    margin: 0.75rem 0;
+}
+
+.htmlSection h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.75rem 0;
+}
+
+.htmlSection h4 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.htmlSection p {
+    font-size: 1rem;
+    margin: 0.75rem 0;
+    line-height: 1.5;
+}
+
+.htmlSection ul {
+    list-style-type: disc;
+    padding-left: 2rem;
+    margin: 0.75rem 0;
+}
+
+.htmlSection ul li {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    line-height: 1.5;
+}
+
+.htmlSection ol {
+    list-style-type: decimal;
+    padding-left: 2rem;
+    margin: 0.75rem 0;
+}
+
+.htmlSection ol li {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    line-height: 1.5;
+}
+
+/* Additional styles for other common HTML elements */
+
+.htmlSection blockquote {
+    font-size: 1.125rem;
+    font-style: italic;
+    margin: 1rem 0;
+    padding-left: 1rem;
+    border-left: 4px solid #ccc;
+}
+
+.htmlSection a {
+    color: #1a202c; /* You can customize this color */
+    text-decoration: underline;
+}
+
+.htmlSection img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}

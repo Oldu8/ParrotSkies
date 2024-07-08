@@ -10,8 +10,8 @@
             <img src="{{ $post->thumbnail }}" alt="image" />
         </div>
     </div>
-    <div class=" p-8">
-        <p class="text-lg text-gray-900">{!! $post->content !!}</p>
+    <div class=" p-8 htmlSection">
+        {!! $post->content !!}
     </div>
 </div>
 @endsection
