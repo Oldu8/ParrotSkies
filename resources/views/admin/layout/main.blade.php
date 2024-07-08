@@ -18,8 +18,12 @@
 <body>
     <div class="wrapper">
         <div class="admin_panel">
-            <div class="w-20 mx-auto pb-5">
-                <img src="/img/logo.png" alt="logo parrot skies" />
+            <div class=" pb-5 flex justify-between">
+                <img class="w-20" src="/img/logo.png" alt="logo parrot skies" />
+                <div class="flex flex-col gap-2 text-white">
+                    <p class="font-bold">{{ Auth::guard('admin')->user()->name }}</p>
+                    <a class="underline" href="{{ route('admin-logout') }}">logout</a>
+                </div>
             </div>
             <div class="flex justify-between">
                 <a href="{{ route('client.home') }}" class="admin_swap">Client</a>
