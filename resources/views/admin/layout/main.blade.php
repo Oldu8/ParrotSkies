@@ -33,7 +33,6 @@
                 <a href="{{ route('admin.welcome') }}" class="admin_swap">Admin</a>
             </div>
             <div class="flex justify-between flex-col pt-5">
-                <!-- <a href="{{ route('admin.welcome') }}" class="admin_link">Home</a> -->
                 <a href="/admin/posts" class="admin_link"> Posts</a>
                 <a href="/admin/categories" class="admin_link">Categories</a>
             </div>
