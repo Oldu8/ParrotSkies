@@ -16,7 +16,8 @@ use App\Http\Controllers\AdminAuthController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// 
+// 
 // Auth::routes();
 
 Route::get('/', [ClientController::class, 'index'])->name('client.home');
