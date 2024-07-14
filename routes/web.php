@@ -41,10 +41,3 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('categories', CategoriesController::class);
     });
 });
-
-// implement likes and comments section 
-// make login for client side
-// 
-// 
-// 
-// 

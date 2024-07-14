@@ -41,6 +41,10 @@ class PostController extends Controller
         $cleanContent = Purifier::clean($validated['content']);
         $validated['content'] = $cleanContent;
 
+        if (!empty($validated['published_at'])) {
+            $validated['published_at'] = date('Y-m-d H:i:s', strtotime($validated['published_at']));
+        }
+
         Post::create($validated);
 
         return redirect('admin/posts/')->with('success', 'Post created!');
@@ -61,6 +65,10 @@ class PostController extends Controller
 
         $cleanContent = Purifier::clean($validated['content']);
         $validated['content'] = $cleanContent;
+
+        if (!empty($validated['published_at'])) {
+            $validated['published_at'] = date('Y-m-d H:i:s', strtotime($validated['published_at']));
+        }
 
         $post->update($validated);
 

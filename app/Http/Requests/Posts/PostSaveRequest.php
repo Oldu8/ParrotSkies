@@ -25,7 +25,7 @@ class PostSaveRequest extends FormRequest
             'active' => 'boolean',
             'thumbnail' => 'string|max:2048',
             'category_id' => 'exists:categories,id',
-            'published_at' => ['nullable', 'string'],
+            'published_at' => ['nullable', 'date_format:Y-m-d\TH:i'],
         ];
     }
 }

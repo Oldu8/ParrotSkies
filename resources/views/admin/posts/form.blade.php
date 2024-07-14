@@ -20,7 +20,7 @@
             <div id="quillEditor" class="bg-white border p-1 rounded min-h-[200px]">
                 {!! $post->content ?? old('content') !!}
             </div>
-            <input type="hidden" name="content" id="contentInput">
+            <input type="hidden" name="content" id="contentInput" value="{!! $post->content ?? old('content') !!}">
         </div>
         <div class="input-group">
             <strong>Is Active:</strong>
@@ -84,11 +84,22 @@
         readOnly: {{ $isNew ? 'false' : 'true' }}
     });
 
-    const form = document.querySelector('form');
-    form.onsubmit = function () {
-        const contentInput = document.querySelector('input[name=content]');
+    // Set the initial content of Quill editor
+    const contentInput = document.getElementById('contentInput');
+    if (contentInput.value) {
+        quill.root.innerHTML = contentInput.value;
+    }
+
+    // Listen for text changes in Quill editor and update the hidden input
+    quill.on('text-change', function () {
         contentInput.value = quill.root.innerHTML;
-    };
+    });
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function () {
+        contentInput.value = quill.root.innerHTML;
+    });
+
 
     const editButton = document.getElementById('editButton');
     const saveButton = document.getElementById('saveButton');
