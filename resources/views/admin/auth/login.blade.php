@@ -42,9 +42,9 @@
                     </button>
                 </div>
             </form>
-            <div class="mt-4 text-center ">
-                <a class="text-blue-500 hover:underline " href="{{ route('admin-register') }}">Create an account</a>
-            </div>
+            <!-- <div class="mt-4 text-center ">
+                <a class="text-blue-500 hover:underline " href="">Create an account</a>
+            </div> -->
         </div>
     </div>
 </body>
