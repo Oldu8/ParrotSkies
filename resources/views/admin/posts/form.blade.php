@@ -64,10 +64,10 @@
         </div>
         <div class="pt-6">
             @if($isNew)
-                <input type="submit" value="Create" class="border p-1 rounded bg-blue-500 text-white w-1/4">
+                <input type="submit" value="Create" class="border p-1 rounded bg-blue-500 text-white w-1/4 cursor-pointer">
             @else
-                <button type="button" id="editButton" class="border p-1 rounded bg-blue-500 text-white w-1/4">Edit</button>
-                <input type="submit" value="Save" class="border p-1 rounded bg-blue-500 text-white w-1/4"
+                <button type="button" id="editButton" class="border p-1 rounded bg-blue-500 text-white w-1/4 cursor-pointer">Edit</button>
+                <input type="submit" value="Save" class="border p-1 rounded bg-blue-500 text-white w-1/4 cursor-pointer"
                     style="display: none;" id="saveButton">
             @endif
         </div>
