@@ -84,13 +84,11 @@
         readOnly: {{ $isNew ? 'false' : 'true' }}
     });
 
-    // Set the initial content of Quill editor
     const contentInput = document.getElementById('contentInput');
     if (contentInput.value) {
         quill.root.innerHTML = contentInput.value;
     }
 
-    // Listen for text changes in Quill editor and update the hidden input
     quill.on('text-change', function () {
         contentInput.value = quill.root.innerHTML;
     });
