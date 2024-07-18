@@ -4,7 +4,7 @@
 @endphp
 
 <div class="py-4 font-semibold text-gray-600 mb-2">
-    <form action="{{ $formAction }}" method="POST" class="flex flex-col gap-2">
+    <form action="{{ $formAction }}" method="POST" class="flex flex-col gap-2" enctype="multipart/form-data">
         @csrf
         @if(!$isNew)
             @method('PATCH')
@@ -47,7 +47,7 @@
             </div>
             <div class="input-group">
                 <strong>Select an image:</strong>
-                <input id="imageInput" type="text" name="thumbnail" value="{{ $post->thumbnail ?? '' }}"
+                <input id="imageInput" type="file" name="thumbnail" value="{{ $post->thumbnail ?? '' }}"
                     style="width: 300px" @if(!$isNew) disabled @endif>
             </div>
             <div class="input-group">

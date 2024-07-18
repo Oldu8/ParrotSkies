@@ -37,6 +37,11 @@ class PostController extends Controller
     public function store(PostSaveRequest $request)
     {
         $validated = $request->validated();
+        $post = Post::create($validated);
+
+        if ($request->hasFile('thumbnail')) {
+            $validated['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
+        }
 
         $cleanContent = Purifier::clean($validated['content']);
         $validated['content'] = $cleanContent;
@@ -45,7 +50,7 @@ class PostController extends Controller
             $validated['published_at'] = date('Y-m-d H:i:s', strtotime($validated['published_at']));
         }
 
-        Post::create($validated);
+        $post->save();
 
         return redirect('admin/posts/')->with('success', 'Post created!');
     }
