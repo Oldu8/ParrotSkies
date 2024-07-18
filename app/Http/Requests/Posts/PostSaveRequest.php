@@ -23,7 +23,7 @@ class PostSaveRequest extends FormRequest
                 Rule::unique('posts', 'slug')->ignore($this->route('post')),
             ],
             'active' => 'boolean',
-            'thumbnail' => 'nullable|image|max:2048',
+            'thumbnail' => 'nullable|image|max:200',
             'category_id' => 'exists:categories,id',
             'published_at' => ['nullable', 'date_format:Y-m-d\TH:i'],
         ];
