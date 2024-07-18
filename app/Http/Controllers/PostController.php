@@ -40,7 +40,8 @@ class PostController extends Controller
         $post = Post::create($validated);
 
         if ($request->hasFile('thumbnail')) {
-            $validated['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
+            $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+            $validated['thumbnail'] = $thumbnailPath;
         }
 
         $cleanContent = Purifier::clean($validated['content']);
@@ -67,6 +68,11 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         $validated = $request->validated();
+
+        if ($request->hasFile('thumbnail')) {
+            $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+            $validated['thumbnail'] = $thumbnailPath;
+        }
 
         $cleanContent = Purifier::clean($validated['content']);
         $validated['content'] = $cleanContent;

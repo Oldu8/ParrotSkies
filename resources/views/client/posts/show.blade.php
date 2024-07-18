@@ -7,7 +7,7 @@
         <h1 class="text-5xl font-bold text-left text-gray-900">{{ $post->title }}</h1>
         <p class="text-md text-gray-900">{{ $post->published_at }}</p>
         <div class="mb-4 w-full max-w-md ">
-            <img src="{{ $post->thumbnail }}" alt="image" />
+            <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="Thumbnail">
         </div>
     </div>
     <div class=" p-8 htmlSection">

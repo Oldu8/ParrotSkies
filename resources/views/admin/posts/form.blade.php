@@ -47,8 +47,7 @@
             </div>
             <div class="input-group">
                 <strong>Select an image:</strong>
-                <input id="imageInput" type="file" name="thumbnail" value="{{ $post->thumbnail ?? '' }}"
-                    style="width: 300px" @if(!$isNew) disabled @endif>
+                <input id="imageInput" type="file" name="thumbnail" style="width: 300px" @if(!$isNew) disabled @endif>
             </div>
             <div class="input-group">
                 <strong>Set your slug:</strong>
