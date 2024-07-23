@@ -1,6 +1,13 @@
 @extends('client.layouts.app')
 @section('title', $post->title) 
 
+
+@section('meta')
+<meta name="description" content="{{ $post->meta_description ?? '' }}">
+<meta name="keywords" content="{{ $post->meta_keywords ?? '' }}">
+@endsection
+
+
 @section('content')
 <div class="container mx-auto mt-12 px-4 sm:px-6 lg:px-8">
     <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col justify-between gap-4  mb-8">

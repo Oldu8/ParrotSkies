@@ -16,6 +16,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/client.css">
 
+    <!-- SEO Meta Tags -->
+    @yield('meta')
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('fav.png') }}">
+
 </head>
 
 <body>
