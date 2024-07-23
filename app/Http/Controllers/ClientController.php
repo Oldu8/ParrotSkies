@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\View\View;
+use Carbon\Carbon;
 
 class ClientController extends Controller
 {
@@ -42,6 +43,8 @@ class ClientController extends Controller
         // Fetch the post by slug
         $post = Post::where('slug', $slug)->firstOrFail();
 
+        $post->formatted_published_at = Carbon::parse($post->published_at)->format('M d, Y | h:i A');
+        // dd($post);
         // Return the view with the post
         return view('client.posts.show', compact('post'));
     }
