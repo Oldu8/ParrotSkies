@@ -48,6 +48,9 @@
             <div class="input-group">
                 <strong>Select an image:</strong>
                 <input id="imageInput" type="file" name="thumbnail" style="width: 300px" @if(!$isNew) disabled @endif>
+                @if(!$isNew && $post->thumbnail)
+                <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="post image" class="w-24 h-24">
+                @endif
             </div>
             <div class="input-group">
                 <strong>Set your slug:</strong>
