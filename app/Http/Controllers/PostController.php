@@ -37,21 +37,21 @@ class PostController extends Controller
     public function store(PostSaveRequest $request)
     {
         $validated = $request->validated();
-        $post = Post::create($validated);
+        $validated['content'] = Purifier::clean($validated['content']);
 
-        if ($request->hasFile('thumbnail')) {
-            $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
-            $validated['thumbnail'] = $thumbnailPath;
-        }
-
-        $cleanContent = Purifier::clean($validated['content']);
-        $validated['content'] = $cleanContent;
-
+        // Handle the published_at date format
         if (!empty($validated['published_at'])) {
             $validated['published_at'] = date('Y-m-d H:i:s', strtotime($validated['published_at']));
         }
 
-        $post->save();
+        // Create the post
+        $post = Post::create($validated);
+
+        // Handle the thumbnail upload
+        if ($request->hasFile('thumbnail')) {
+            $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+            $post->update(['thumbnail' => $thumbnailPath]);
+        }
 
         return redirect('admin/posts/')->with('success', 'Post created!');
     }
@@ -66,19 +66,18 @@ class PostController extends Controller
     public function update(PostSaveRequest $request, string $id)
     {
         $post = Post::findOrFail($id);
-
         $validated = $request->validated();
+        $validated['content'] = Purifier::clean($validated['content']);
 
+        // Handle the published_at date format
+        if (!empty($validated['published_at'])) {
+            $validated['published_at'] = date('Y-m-d H:i:s', strtotime($validated['published_at']));
+        }
+
+        // Handle the thumbnail upload
         if ($request->hasFile('thumbnail')) {
             $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
             $validated['thumbnail'] = $thumbnailPath;
-        }
-
-        $cleanContent = Purifier::clean($validated['content']);
-        $validated['content'] = $cleanContent;
-
-        if (!empty($validated['published_at'])) {
-            $validated['published_at'] = date('Y-m-d H:i:s', strtotime($validated['published_at']));
         }
 
         $post->update($validated);
