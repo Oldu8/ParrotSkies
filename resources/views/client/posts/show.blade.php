@@ -3,8 +3,11 @@
 
 
 @section('meta')
-<meta name="description" content="{{ $post->meta_description ?? '' }}">
-<meta name="keywords" content="{{ $post->meta_keywords ?? '' }}">
+<meta name="description"
+    content="{{ $post->meta_description ?? 'Discover tips, experiences, and advice on traveling with parrots and pets. Join our community to find pet-friendly destinations, accommodations, and more to make your adventures with your furry and feathered friends unforgettable.' }}">
+<meta name="keywords"
+    content="{{ $post->meta_keywords ?? 'traveling with pets, traveling with parrots, pet travel tips, pet-friendly destinations, pet-friendly accommodations, animal travel, parrot travel tips, pet travel forum, travel with animals, travel community' }}">
+<meta name="author" content="Parrot Skies">
 @endsection
 
 
