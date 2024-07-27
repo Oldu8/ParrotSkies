@@ -20,10 +20,12 @@ class ClientController extends Controller
     //     $this->middleware('auth');
     // }
 
-    //TODO: do we need this ? 
     public function index(): View
     {
-        return view('client.home');
+        $recentPosts = Post::orderBy('created_at', 'desc')->take(6)->get();
+        $categories = Category::all();
+
+        return view('client.home', compact('recentPosts', 'categories'));
     }
 
     public function showAllPosts(Request $request): View
