@@ -38,8 +38,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach ($recentPosts as $post)
                 <div class="bg-white p-4 rounded-lg shadow-lg">
-                    <img src="{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('img/basic_post_img.jpg') }}"
-                        alt="{{ $post->title }}" class="w-full h-48 object-cover rounded-t-lg">
+                    <img src="{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('images/basic_post_img.jpg') }}"
+                        alt="{{ $post->title }}" class="w-full h-48 object-cover rounded-t-lg"
+                        onerror="this.onerror=null; this.src='{{ asset('storage/basic_post_img.jpg') }}';">
                     <div class="p-4">
                         <h3 class="text-xl font-bold">{{ $post->title }}</h3>
                         <a href="{{ route('client.post.show', $post->slug) }}" class="text-blue-500 mt-2 inline-block">Read
