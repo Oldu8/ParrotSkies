@@ -17,7 +17,6 @@
     </button>
 </header>
 
-<!-- Mobile Menu -->
 <div id="mobile-menu" class="hidden md:hidden bg-white shadow-sm py-2 px-4 space-y-2 absolute w-full top-20">
     <a href="/categories" class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">All
         Categories</a>
