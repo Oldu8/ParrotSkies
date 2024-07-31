@@ -25,8 +25,7 @@
             @foreach ($categories as $category)
                 <div class="bg-white p-4 rounded-lg shadow-lg text-center">
                     <h3 class="text-xl font-bold">{{ $category->name }}</h3>
-                    <a href="{{ route('categories.show', $category->id) }}"
-                        class="text-blue-500 mt-2 inline-block">Explore</a>
+                    <a href="/posts?category={{ $category->id }}" class="text-blue-500 mt-2 inline-block">Explore</a>
                 </div>
             @endforeach
         </div>

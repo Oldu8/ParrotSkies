@@ -16,6 +16,7 @@ class Post extends Model
         'content',
         'active',
         'thumbnail',
+        'admin_user_id', // Add this line
         'category_id',
         'slug',
         'published_at',
@@ -29,5 +30,10 @@ class Post extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function adminUser(): BelongsTo
+    {
+        return $this->belongsTo(AdminUser::class);
     }
 }

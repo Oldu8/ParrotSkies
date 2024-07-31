@@ -38,6 +38,7 @@ class PostController extends Controller
     {
         $validated = $request->validated();
         $validated['content'] = Purifier::clean($validated['content']);
+        $validated['admin_user_id'] = auth()->id();
 
         // Handle the published_at date format
         if (!empty($validated['published_at'])) {

@@ -19,6 +19,9 @@
         <div class="mb-4 w-full max-w-md ">
             <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="post image">
         </div>
+        <div class="post-author">
+            <strong>Author:</strong> {{ $post->adminUser->name }}
+        </div>
     </div>
     <div class=" p-8 htmlSection">
         {!! $post->content !!}
