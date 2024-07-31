@@ -30,7 +30,7 @@
             <div class="py-2">
                 @yield('content')
             </div>
-            <footer class="py-2 flex justify-between mt-auto">
+            <footer class="py-2 px-4 flex justify-between mt-auto">
                 <p>© 2024 Parrot Skies. All rights reserved.</p>
                 <p>Made by Oldu</p>
             </footer>

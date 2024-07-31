@@ -8,10 +8,12 @@
         <!-- Filter Form -->
         <div class="mb-8 flex justify-center">
             <form method="GET" action="{{ route('client.all-posts') }}"
-                class="flex items-center space-x-4 bg-gray-100 p-4 rounded-lg shadow-sm">
-                <label for="category" class="text-lg font-semibold text-gray-700">Filter by Category:</label>
+                class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 bg-gray-100 p-4 rounded-lg shadow-sm w-full max-w-md sm:max-w-none">
+                <label for="category" class="text-lg font-semibold text-gray-700 sm:flex-shrink-0 sm:self-center">
+                    Filter by Category:
+                </label>
                 <select name="category" id="category"
-                    class="block w-64 p-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500">
+                    class="block w-full sm:w-64 p-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500">
                     <option value="">All Categories</option>
                     @foreach($categories as $key => $category)
                         <option value="{{ $key }}" {{ request('category') == $key ? 'selected' : '' }}>
@@ -25,6 +27,7 @@
                 </button>
             </form>
         </div>
+
 
         <div>
             <h2 class="text-3xl font-semibold text-gray-800 mb-6">All our recent posts:</h2>
