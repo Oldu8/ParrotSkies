@@ -26,9 +26,12 @@ Route::get('/categories', [ClientController::class, 'showAllCategories'])->name(
 Route::get('/posts/{slug}', [ClientController::class, 'showPostBySlug'])->name('client.post.show');
 
 Route::group(['prefix' => 'admin'], function () {
+    // Redirect /admin to /admin/login
+    Route::get('/', function () {
+        return redirect()->route('admin-login');
+    });
+
     Route::group(['middleware' => 'guest:admin'], function () {
-        // Route::get('/register', [AdminAuthController::class, 'register'])->name('admin-register');
-        // Route::post('/register', [AdminAuthController::class, 'registerPost'])->name('admin-register');
         Route::get('/login', [AdminAuthController::class, 'login'])->name('admin-login');
         Route::post('/login', [AdminAuthController::class, 'loginPost'])->name('admin-login');
     });
@@ -41,3 +44,4 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('categories', CategoriesController::class);
     });
 });
+
