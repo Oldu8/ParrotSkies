@@ -25,10 +25,12 @@
         <div class="input-group">
             <strong>Is Active:</strong>
             <div class="toggle-switch">
+                @csrf
                 <input type="hidden" name="active" value="0">
-                <input type="checkbox" id="active" name="active" value="1" @if(isset($post) && $post->active) checked @endif
-                    @if(!$isNew) disabled @endif>
-                <label for="active" class="toggle-label">
+                <input type="checkbox" id="toggle-active-{{ $post->id }}" name="active" value="1"
+                    data-route="{{ route('posts.toggle-active', ['post' => $post->id]) }}" @if($post->active) checked
+                    @endif>
+                <label for="toggle-active-{{ $post->id }}" class="toggle-label">
                     <span class="toggle-inner"></span>
                     <span class="toggle-switch"></span>
                 </label>
@@ -49,7 +51,7 @@
                 <strong>Select an image:</strong>
                 <input id="imageInput" type="file" name="thumbnail" style="width: 300px" @if(!$isNew) disabled @endif>
                 @if(!$isNew && $post->thumbnail)
-                <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="post image" class="w-24 h-24">
+                    <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="post image" class="w-24 h-24">
                 @endif
             </div>
             <div class="input-group">
@@ -117,5 +119,42 @@
             document.getElementById('publishedInput').disabled = false;
         });
     }
+
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.toggle-switch input[type="checkbox"]').forEach(function (toggle) {
+            toggle.addEventListener('change', function () {
+                let route = this.dataset.route;
+                let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                let activeStatus = this.checked ? 'true' : 'false';
+
+                fetch(route, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+                    body: JSON.stringify({
+                        active: activeStatus
+                    })
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        alert('An error occurred: ' + error.message);
+                    });
+            });
+        });
+    });
 </script>
 @endsection
